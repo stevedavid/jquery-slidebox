@@ -5,7 +5,7 @@ A simple light-weight jQuery plugin that makes a `<div>` (or another `block` ele
 Please [check this link](http://jsfiddle.net/D4V1D/yyj5zaLw/) to see this plugin in action. 
 
 ## Releases
-* **v0.1** - 31/07/0215
+* **v0.1** - 31/07/2015
 
 ## Requirements
 `jQuery.slideBox` requires the latest version of [`jQuery`](https://jquery.com/download/).
