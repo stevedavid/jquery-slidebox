@@ -14,6 +14,7 @@ Please [check this link](http://jsfiddle.net/D4V1D/yyj5zaLw/) to see this plugin
 * uses `.animate()` with callback function
 * all directions are customizable
 * can be triggered when any DOMElement is visible **or** at any specific offset
+* closing option for the whole session on the page available
 
 ## Usage
 * **HTML**
@@ -21,7 +22,7 @@ Please [check this link](http://jsfiddle.net/D4V1D/yyj5zaLw/) to see this plugin
 First of all, you would need to design your slideBox. Here is a short exemple of what you can do:
 ```html
 <div id="slidebox">
-    <h3>Follow us!</h3>
+    <h3>Follow us!<small style="float: right;"><a href="#" id="close">close</a></small></h3>
     <p style="margin-bottom: 50px;">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </p>
@@ -53,14 +54,15 @@ The syntax of `jQuery.slideBox`'s initialization is the following:
 jQuery(function($) {
 
     $('#slidebox').slideBox({
-        position: 'bottom right',
-        appearsFrom: 'right',
-        slideDuration: 500,
-        target: 'h2'
+        position: 'bottom right', // can be [bottom|middle|top] and [left|center|right]
+        appearsFrom: 'right', // can be [left|top|right|bottom]
+        slideDuration: 500, // animation duration in ms
+        target: 'h2', // can be a string (jQuery selector) or an offset (in px)
+        closeLink: '#close' // a string that is the jQuery selector of the closing element
     }).on('sb.hidden', function() {
         alert('hidden');
     }).on('sb.shown', function() {
-       alert('shown');
+        alert('shown');
     });
 
 });
@@ -73,6 +75,7 @@ position | string | 'bottom right' | The position where the box will appears. Th
 appearsFrom | string | 'right' | The side where the box will slide from. This string can be 'left\|top\|right\|bottom'.
 slideDuration | integer | 1500 | The duration of the sliding animation for both showBox and hideBox events (in `ms`)
 target | integer\|string | 1250 | This represents what is triggering both events. Can be a integer (offset in `px`) or a string (jQuery selector)
+closeLink | string | *(none)* | A string representating the jQuery selector of the DOMElement that will trigger the hideBox event
 
 ## Events
 Name | Description
