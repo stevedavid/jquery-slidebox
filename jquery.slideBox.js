@@ -23,6 +23,8 @@
         zeroElement: '[jQuery.slideBox] Error: could not find the slideBox in the DOM. Are you sure the selector is correct?'
     };
 
+    $.closed = false;
+
     $.position = {
         horizontal: null,
         vertical: null
@@ -40,6 +42,11 @@
                 if($(this).scrollTop() + $(window).height() > threShold) {
                     if(!$(elem).is(':visible') && !$(elem).is(':animated')) {
                         $.slideBox.showBox(elem, options);
+                        $(elem).find(options.closeLink).on('click', function(e) {
+                            e.preventDefault();
+                            $.closed = true;
+                            $.slideBox.hideBox(elem, options);
+                        });
                     }
                 } else {
                     if($(elem).is(':visible') && !$(elem).is(':animated')) {
@@ -111,52 +118,56 @@
         var animation = {};
         animation[options.appearsFrom] = $.slideBox.calculateNewPosition(elem, options);
 
+
         $(elem).animate(animation, {
             duration: options.slideDuration,
             complete: function() {
                 $(elem).trigger('sb.hidden');
                 $(elem).css('display', 'none');
             }
-        })
+        });
 
     };
 
     $.slideBox.showBox = function(elem, options) {
-        $(elem).css('display', 'block');
-        var animation = {}
-            , value;
+        if(!$.closed) {
 
-        switch(options.appearsFrom) {
-            case 'top':
-            case 'bottom':
-                if($.position.vertical == options.appearsFrom) {
-                    value = 0;
-                } else {
-                    value = $(window).innerHeight() - $(elem).outerHeight();
-                }
-                break;
-            case 'left':
-            case 'right':
-                if($.position.horizontal == options.appearsFrom) {
-                    value = 0;
-                } else {
-                    value = $(window).innerWidth() - $(elem).outerWidth();
-                }
-                break;
-        }
+            $(elem).css('display', 'block');
+            var animation = {}
+                , value;
 
-        animation[options.appearsFrom] = value;
-        $(elem).animate(animation, {
-            duration: options.slideDuration,
-            complete: function() {
-                $(elem).trigger('sb.shown');
+            switch(options.appearsFrom) {
+                case 'top':
+                case 'bottom':
+                    if($.position.vertical == options.appearsFrom) {
+                        value = 0;
+                    } else {
+                        value = $(window).innerHeight() - $(elem).outerHeight();
+                    }
+                    break;
+                case 'left':
+                case 'right':
+                    if($.position.horizontal == options.appearsFrom) {
+                        value = 0;
+                    } else {
+                        value = $(window).innerWidth() - $(elem).outerWidth();
+                    }
+                    break;
             }
-        });
+
+            animation[options.appearsFrom] = value;
+            $(elem).animate(animation, {
+                duration: options.slideDuration,
+                complete: function() {
+                    $(elem).trigger('sb.shown');
+                }
+            });
+        }
     };
 
     $.slideBox.calculateNewPosition = function(elem, options) {
-        var width = $(elem).width()
-            , height = $(elem).height()
+        var width = $(elem).outerWidth()
+            , height = $(elem).outerHeight()
             , value;
 
         switch(options.appearsFrom) {
@@ -177,6 +188,7 @@
         position: 'bottom right',
         appearsFrom: 'right',
         slideDuration: 1500,
-        target: 1250
+        target: 1250,
+        closeLink: '#close'
     };
 })(jQuery);
