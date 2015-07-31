@@ -1,5 +1,5 @@
 # jQuery.slideBox
-A simple light-weight jQuery plugin that makes a `<div>` (or another `block` element) moving from outside the page to one side of your choice.
+A simple light-weight jQuery plugin that makes a `<div>` (or another `block` element) moving from outside the page to one side of your choice when scrolling to a specific point.
 
 ## Demo
 Please [check this link](http://jsfiddle.net/D4V1D/yyj5zaLw/) to see this plugin in action. 
