@@ -22,11 +22,16 @@ Please [check this link](http://jsfiddle.net/D4V1D/yyj5zaLw/) to see this plugin
 First of all, you would need to design your slideBox. Here is a short exemple of what you can do:
 ```html
 <div id="slidebox">
-    <h3>Follow us!<small style="float: right;"><a href="#" id="close">close</a></small></h3>
+    <h3>
+        Follow us!
+        <small style="float: right;">
+            <a href="#" id="close">close</a>
+        </small>
+    </h3>
     <p style="margin-bottom: 50px;">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </p>
-    <p class="text-center">
+    <p class="text-align: center;">
         <img style="width: 50px;" src="http://lorempixel.com/50/50/" alt="social_icons"/>
     </p>
 </div>
