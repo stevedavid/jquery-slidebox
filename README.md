@@ -27,7 +27,7 @@ First of all, you would need to design your slideBox. Here is a short exemple of
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </p>
     <p class="text-center">
-        <img style="width: 50px;" src="http://icons.iconarchive.com/icons/yootheme/social-bookmark/512/social-facebook-box-blue-icon.png" alt="social_icons"/>
+        <img style="width: 50px;" src="http://lorempixel.com/50/50/" alt="social_icons"/>
     </p>
 </div>
 ```
