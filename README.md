@@ -32,7 +32,7 @@ First of all, you would need to design your slideBox. Here is a short exemple of
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </p>
     <p class="text-align: center;">
-        <img style="width: 50px;" src="http://lorempixel.com/50/50/" alt="social_icons"/>
+        <img src="http://lorempixel.com/50/50/" alt="social_icons"/>
     </p>
 </div>
 ```
