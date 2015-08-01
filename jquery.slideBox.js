@@ -189,6 +189,6 @@
         appearsFrom: 'right',
         slideDuration: 1500,
         target: 1250,
-        closeLink: '#close'
+        closeLink: null
     };
 })(jQuery);
